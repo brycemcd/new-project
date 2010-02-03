@@ -5,8 +5,13 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environ
 require 'spec/autorun'
 require 'spec/rails'
 
-# Uncomment the next line to use webrat's matchers
-#require 'webrat/integrations/rspec-rails'
+require File.dirname(__FILE__) + "/factories"
+
+def login_user
+    activate_authlogic
+    @user = Factory.create(:user)
+    UserSession.create @user
+end
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
